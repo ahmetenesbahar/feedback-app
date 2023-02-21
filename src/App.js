@@ -42,7 +42,7 @@ function App() {
       <Header />
       <div className="container">
         <Routes>
-          <Route
+          <Route //version 6 ile birlikte route ları routes ların içine atıyoruz bir de component yerine element koyuluyormuş
             exact
             path="/"
             element={
