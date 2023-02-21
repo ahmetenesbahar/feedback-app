@@ -3,7 +3,6 @@ import { useState } from "react";
 import RatingSelect from "./RatingSelect";
 import Card from "./shared/Card";
 import Button from "./shared/Button";
-import PropTypes from "prop-types";
 
 function FeedbackForm({ handleAdd }) {
   const [text, setText] = useState("");
@@ -11,7 +10,7 @@ function FeedbackForm({ handleAdd }) {
   const [btnDisabled, setBtnDisabled] = useState(true);
   const [message, setMessage] = useState("");
   const handleTextChange = (e) => {
-    if (text == "") {
+    if (text === "") {
       setBtnDisabled(true);
       setMessage(null);
     } else if (text !== "" && text.trim().length <= 10) {
