@@ -7,6 +7,7 @@ import FeedbackData from "./data/FeedbackData";
 import FeedbackList from "./components/FeedbackList";
 import FeedbackStats from "./components/FeedbackStats";
 import FeedbackForm from "./components/FeedbackForm";
+import AboutIconLink from "./components/shared/AboutIconLink";
 import AboutPage from "./pages/AboutPage";
 function App() {
   const [feedback, setFeedback] = useState([...FeedbackData]);
@@ -57,6 +58,7 @@ function App() {
           />
           <Route path="/about" element={<AboutPage />} />
         </Routes>
+        <AboutIconLink />
       </div>
       {/* <button onClick={handleOnClick}>Ekle</button> */}
     </Router>
