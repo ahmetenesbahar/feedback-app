@@ -9,6 +9,7 @@ import FeedbackStats from "./components/FeedbackStats";
 import FeedbackForm from "./components/FeedbackForm";
 import AboutIconLink from "./components/shared/AboutIconLink";
 import AboutPage from "./pages/AboutPage";
+import { FeedbackProvider } from "./components/context/FeedbackContext";
 function App() {
   const [feedback, setFeedback] = useState([...FeedbackData]);
   // const handleOnClick = () => {
@@ -38,30 +39,32 @@ function App() {
     setFeedback([newFeedback, ...feedback]);
   };
   return (
-    <Router>
-      <Header />
-      <div className="container">
-        <Routes>
-          <Route //version 6 ile birlikte route ları routes ların içine atıyoruz bir de component yerine element koyuluyormuş
-            exact
-            path="/"
-            element={
-              <>
-                <FeedbackForm handleAdd={addFeedback} />
-                <FeedbackStats feedback={feedback} />
-                <FeedbackList
-                  feedback={feedback}
-                  handleDelete={deleteFeedback}
-                />
-              </>
-            }
-          />
-          <Route path="/about" element={<AboutPage />} />
-        </Routes>
-        <AboutIconLink />
-      </div>
-      {/* <button onClick={handleOnClick}>Ekle</button> */}
-    </Router>
+    <FeedbackProvider>
+      <Router>
+        <Header />
+        <div className="container">
+          <Routes>
+            <Route //version 6 ile birlikte route ları routes ların içine atıyoruz bir de component yerine element koyuluyormuş
+              exact
+              path="/"
+              element={
+                <>
+                  <FeedbackForm handleAdd={addFeedback} />
+                  <FeedbackStats feedback={feedback} />
+                  <FeedbackList
+                    feedback={feedback}
+                    handleDelete={deleteFeedback}
+                  />
+                </>
+              }
+            />
+            <Route path="/about" element={<AboutPage />} />
+          </Routes>
+          <AboutIconLink />
+        </div>
+        {/* <button onClick={handleOnClick}>Ekle</button> */}
+      </Router>
+    </FeedbackProvider>
   );
 }
 
