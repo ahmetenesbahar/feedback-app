@@ -13,12 +13,12 @@ export const FeedbackProvider = ({ children }) => {
     {
       id: 2,
       text: "This item is from context 2",
-      rating: 10,
+      rating: 9,
     },
     {
       id: 3,
       text: "This item is from context 3",
-      rating: 10,
+      rating: 3,
     },
   ]);
   const [feedbackEdit, setFeedbackEdit] = useState({
@@ -37,6 +37,12 @@ export const FeedbackProvider = ({ children }) => {
       setFeedback(feedback.filter((item) => item.id !== id));
     }
   };
+  //Update feedback item
+  const updateFeedback = (id, updItem) => {
+    setFeedback(
+      feedback.map((item) => (item.id === id ? { ...item, ...updItem } : item))
+    );
+  };
   //Set item to be updated
   const editFeedback = (item) => {
     setFeedbackEdit({
@@ -46,7 +52,14 @@ export const FeedbackProvider = ({ children }) => {
   };
   return (
     <FeedbackContext.Provider
-      value={{ feedback, deleteFeedback, addFeedback, editFeedback }}
+      value={{
+        feedback,
+        deleteFeedback,
+        addFeedback,
+        editFeedback,
+        feedbackEdit,
+        updateFeedback,
+      }}
     >
       {children}
     </FeedbackContext.Provider>
