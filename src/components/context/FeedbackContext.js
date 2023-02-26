@@ -21,18 +21,33 @@ export const FeedbackProvider = ({ children }) => {
       rating: 10,
     },
   ]);
+  const [feedbackEdit, setFeedbackEdit] = useState({
+    item: {},
+    edit: false,
+  });
+  // Add feedback
   const addFeedback = (newFeedback) => {
     //Peki ben burda id generatle leyip vermek istesem nasıl yapardım ?
     newFeedback.id = uuidv4();
     setFeedback([newFeedback, ...feedback]);
   };
+  // Delete feedback
   const deleteFeedback = (id) => {
     if (window.confirm("Are you sure you want to delete this feedback?")) {
       setFeedback(feedback.filter((item) => item.id !== id));
     }
   };
+  //Set item to be updated
+  const editFeedback = (item) => {
+    setFeedbackEdit({
+      item,
+      edit: true,
+    });
+  };
   return (
-    <FeedbackContext.Provider value={{ feedback, deleteFeedback, addFeedback }}>
+    <FeedbackContext.Provider
+      value={{ feedback, deleteFeedback, addFeedback, editFeedback }}
+    >
       {children}
     </FeedbackContext.Provider>
   );
