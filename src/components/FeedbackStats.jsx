@@ -1,6 +1,5 @@
 import React from "react";
 import { useContext } from "react";
-import PropTypes from "prop-types";
 import FeedbackContext from "./context/FeedbackContext";
 
 function FeedbackStats() {
