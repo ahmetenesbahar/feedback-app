@@ -10,7 +10,6 @@ Bu proje React kullanarak geliştirdiğim bir yorum yapma uygulamasıdır.
 git clone https://github.com/ahmetenesbahar/feedback-app.git
 ```
 
-Klonlama işleminin ardından live server açarak kodu önizleyebilirsiniz.
 
 ## Çalıştırma
 
